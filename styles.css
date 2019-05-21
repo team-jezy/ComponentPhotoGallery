@@ -1,0 +1,30 @@
+img {
+    width: 400px;
+}
+
+body {
+    background-color: plum;
+    text-align: center;
+}
+
+#pictures {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#pictures li {
+    list-style: none;
+    display: inline-block;
+    width: 400px;
+    border: 1px solid white;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+h2, p {
+    text-align: center;
+}
