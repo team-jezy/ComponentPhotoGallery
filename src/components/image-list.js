@@ -2,6 +2,11 @@ import Component from '../components/Component.js';
 
 class ImageList extends Component {
 
+    render() {
+        const images = this.props.images;
+        console.log(images);
+    }
+
     renderTemplate() {
         return /*html*/`
         <ul id="pictures">
