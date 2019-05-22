@@ -28,9 +28,7 @@ class App extends Component {
     renderTemplate() {
         return /*html*/`
             <div>
-                // header should go here
                 <main>
-                // this is where list goes
                 </main>
             </div>
         `;
