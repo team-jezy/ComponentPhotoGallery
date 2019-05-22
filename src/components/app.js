@@ -1,7 +1,8 @@
 import images from '../../data/data.js';
 import Component from './Component.js';
 import Header from './Header.js';
-import ImageList from './image-list.js';
+import ImageList from './ImageList.js';
+import AddImage from './AddImage.js';
 
 class App extends Component {
 
@@ -16,6 +17,16 @@ class App extends Component {
         const props = {
             images: images
         };
+
+        const addImage = new AddImage({
+            onAdd: (newImage) => {
+                images.unshift(newImage);
+                imageList.update({ images });
+            }
+
+        });
+        const addImageDOM = addImage.render();
+        main.appendChild(addImageDOM);
 
         const imageList = new ImageList(props);
         const imageListDom = imageList.render();
