@@ -1,4 +1,5 @@
 function filterImages(images, filter) {
+
     return images.filter(image => {
 
         const horns = image.horns >= filter.horns;

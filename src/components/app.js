@@ -3,6 +3,8 @@ import Component from './Component.js';
 import Header from './Header.js';
 import ImageList from './ImageList.js';
 import AddImage from './AddImage.js';
+import Filter from './Filter.js';
+import filterImages from '../filter-function.js';
 
 class App extends Component {
 
@@ -22,6 +24,7 @@ class App extends Component {
             onAdd: (newImage) => {
                 images.unshift(newImage);
                 imageList.update({ images });
+                filter.update();
             }
 
         });
@@ -31,6 +34,14 @@ class App extends Component {
         const imageList = new ImageList(props);
         const imageListDom = imageList.render();
         main.appendChild(imageListDom);
+
+        const filter = new Filter({
+            onFilter: filter => {
+                const filtered = filterImages(images, filter);
+                imageList.update({ images: filtered });
+            }
+        });
+        dom.insertBefore(filter.render(), main);
 
 
         return dom;
