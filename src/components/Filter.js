@@ -25,8 +25,8 @@ class Filter extends Component {
     renderTemplate() {
         return /*html*/`
         <section class="filter-section">
-            <input class="filter" name="filter">
-            <input class="horns-input" type="number"> 
+            Search By Keyword: <input class="filter" name="filter">
+            Or Search By Horn #: <input class="horns-input" type="number"> 
         </section>
         `;
     }

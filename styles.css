@@ -3,7 +3,7 @@ img {
 }
 
 body {
-    background-color: plum;
+    background-color: steelblue;
     text-align: center;
 }
 
@@ -27,4 +27,8 @@ body {
 
 h2, p {
     text-align: center;
+}
+
+.filter-section {
+    margin-bottom: 20px;
 }
