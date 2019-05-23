@@ -28,8 +28,8 @@ const images = [
 
 function filterImages(images, filter) {
     return images.filter(image => {
-        console.log('image', image.horns);
-        console.log('filter', filter);
+
+        const horns = image.horns >= filter.horns;
         const title = image
             .title
             .toLowerCase()
@@ -42,20 +42,16 @@ function filterImages(images, filter) {
             .description
             .toLowerCase()
             .includes(filter.text.toLowerCase());
-        let horns = false;
-        if(image.horns === filter.horns){
-            return horns = true;
-        }
-        console.log(horns);
-        return title || keyword || description || horns;
+        return (title || keyword || description) && horns;
     });
-        
+
 }
 
 test('filters on title', assert => {
     //arrange
     const filter = {
-        text: 'UniWhal'
+        text: 'UniWhal',
+        horns: ''
     };
 
     //act
@@ -77,7 +73,8 @@ test('filters on title', assert => {
 test('filters on name case insensitive', assert => {
     //arrange
     const filter = {
-        text: 'uniWhal'
+        text: 'uniWhal',
+        horns: ''
     };
 
     //act
@@ -99,7 +96,8 @@ test('filters on name case insensitive', assert => {
 test('returns all on no filter', assert => {
     //arrange
     const filter = {
-        text: ''
+        text: '',
+        horns: ''
     };
 
     //act
@@ -114,7 +112,8 @@ test('returns all on no filter', assert => {
 test('filter for title and keyword', assert => {
     //arrange
     const filter = {
-        text: 'head'
+        text: 'head',
+        horns: ''
     };
 
     //act
@@ -161,7 +160,7 @@ test('filter for number of horns', assert => {
             'description': 'Mother (or father) rhino with two babies',
             'keyword': 'head', //removed word rhino, replaced with head
             'horns': 2
-        },
+        }
 
     ]);
 
