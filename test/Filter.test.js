@@ -1,3 +1,4 @@
+import filterImages from '../src/filter-function.js';
 
 const test = QUnit.test;
 QUnit.module('filter test for images');
@@ -25,27 +26,6 @@ const images = [
         'horns': 1
     }
 ];
-
-function filterImages(images, filter) {
-    return images.filter(image => {
-
-        const horns = image.horns >= filter.horns;
-        const title = image
-            .title
-            .toLowerCase()
-            .includes(filter.text.toLowerCase());
-        const keyword = image
-            .keyword
-            .toLowerCase()
-            .includes(filter.text.toLowerCase());
-        const description = image
-            .description
-            .toLowerCase()
-            .includes(filter.text.toLowerCase());
-        return (title || keyword || description) && horns;
-    });
-
-}
 
 test('filters on title', assert => {
     //arrange
