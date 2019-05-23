@@ -28,7 +28,8 @@ const images = [
 
 function filterImages(images, filter) {
     return images.filter(image => {
-        
+        console.log('image', image.horns);
+        console.log('filter', filter);
         const title = image
             .title
             .toLowerCase()
@@ -41,8 +42,12 @@ function filterImages(images, filter) {
             .description
             .toLowerCase()
             .includes(filter.text.toLowerCase());
-
-        return title || keyword || description;
+        let horns = false;
+        if(image.horns === filter.horns){
+            return horns = true;
+        }
+        console.log(horns);
+        return title || keyword || description || horns;
     });
         
 }
@@ -132,6 +137,31 @@ test('filter for title and keyword', assert => {
             'keyword': 'unicorn',
             'horns': 1
         }
+
+    ]);
+
+});
+
+test('filter for number of horns', assert => {
+    //arrange
+    const filter = {
+        text: '',
+        horns: '2'
+    };
+
+    //act
+
+    const filtered = filterImages(images, filter);
+  
+    //assert
+    assert.deepEqual(filtered, [
+        {
+            'url': 'https://images.unsplash.com/photo-1512636618879-bbe79107e9e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd9460ee6d1ddbb6b1ca7be86dfc4590&auto=format&fit=crop&w=1825&q=80',
+            'title': 'Rhino Family',
+            'description': 'Mother (or father) rhino with two babies',
+            'keyword': 'head', //removed word rhino, replaced with head
+            'horns': 2
+        },
 
     ]);
 
